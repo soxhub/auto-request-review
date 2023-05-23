@@ -118,7 +118,7 @@ async function get_team_members(team) {
   const octokit = get_octokit();
   const org = core.getInput('org') || context.payload.repository.owner.login;
 
-  return octokit.teams.listMembersInOrg({
+  return await octokit.teams.listMembersInOrg({
     org,
     team_slug: team,
   })?.data?.map((member) => member.login);
