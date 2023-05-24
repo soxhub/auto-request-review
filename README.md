@@ -149,6 +149,8 @@ reviewers:
     designer_b:
       - lead_desinger # username
       - desinger_a # username
+    team:engineering-managers:
+      - engineers
 
 files:
   # Keys are glob expressions.
@@ -199,7 +201,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Request review based on files changes and/or groups the author belongs to
-        uses: necojackarc/auto-request-review@v0.12.0
+        uses: necojackarc/auto-request-review@v0.11.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config: .github/reviewers.yml # Config file location override
