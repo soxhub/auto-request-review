@@ -55,6 +55,12 @@ async function run() {
 
   let reviewers = [ ...new Set([ ...reviewers_based_on_files, ...reviewers_based_on_author, ...reviewers_from_same_teams ]) ];
 
+  if (reviewers.length === 0 && config.options?.re_request_review === false) {
+    core.info('Matched no reviewers');
+    core.info('Re-request review is disabled - exiting');
+    return;
+  }
+
   if (reviewers.length === 0) {
     core.info('Matched no reviewers');
     const default_reviewers = fetch_default_reviewers({ config, excludes: [ author ] });
