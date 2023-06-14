@@ -147,8 +147,8 @@ async function get_reviewers() {
   });
 
   return {
-    requested_individuals: data?.requested_reviewers?.map((member) => member.login),
-    requested_teams: data?.requested_teams?.map((team) => team.slug),
+    requested_individuals: data?.requested_reviewers?.map((member) => member.login) || [],
+    requested_teams: data?.requested_teams?.map((team) => team.slug) || [],
   };
 }
 
